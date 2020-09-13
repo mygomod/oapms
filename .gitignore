@@ -1,0 +1,7 @@
+.beegopro.timestamp
+.idea
+bak
+oapms
+bin.tar.gz
+conf/conf-prod.toml
+dist.tar.gz

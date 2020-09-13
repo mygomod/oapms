@@ -1,0 +1,44 @@
+[{
+  "appId":1,
+  "menus": [{
+    "name": "用户",
+    "path": "/account",
+    "menuType": 1,
+    "children": [{
+      "name": "欢迎",
+      "path":"/account/welcome",
+      "menuType": 1
+    }]
+  },{
+    "name": "OA",
+    "path":"/oa",
+    "icon": "RocketOutlined",
+    "menuType": 1,
+    "children": [{
+      "name": "应用",
+      "path":"/oa/app",
+      "menuType": 1,
+      "children": []
+    },{
+      "name": "用户",
+      "path":"/oa/user",
+      "menuType": 1,
+      "children": []
+    }]
+  },{
+    "name": "权限",
+    "path":"/pms",
+    "menuType": 1,
+    "children": [{
+      "name": "菜单",
+      "path":"/pms/menu",
+      "menuType": 1
+    },{
+      "name": "角色",
+      "path":"/pms/role",
+      "menuType": 1
+    }]
+  }]
+}]
+
+

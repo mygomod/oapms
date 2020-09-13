@@ -1,0 +1,78 @@
+dsn = "root:root@tcp(127.0.0.1:3306)/oapms"
+debug = false
+contextDebug = false
+driver = "mysql"
+proType = "ant4popup"
+enableModule = []
+apiPrefix = "/api/admin"
+gitRemotePath = "git@github.com:mygomod/bee-gin-pro.git"
+#gitLocalPath = "/home/www/server/github/mygomod/bee-gin-pro"
+enableFormat = true
+sourceGen = "text"
+enableGitPull = false
+[models.app]
+    names = ["aid","client_id","name","secret","redirect_uri","url","extra","call_no","state","ctime","utime","dtime"]
+    orms = ["auto","string","string","string","string","string","text","int","int","int64","int64","int64"]
+    comments = ["应用id","客户端","名称","秘钥","跳转地址","访问地址","额外信息","号码","状态","创建时间","更新时间","删除时间"]
+[models.authorize]
+    names = ["client","code","expires_in","scope","redirect_uri","state","extra","ctime"]
+    orms = ["string","string","int32","string","string","string","text","int64"]
+    comments = ["客户端","状态码","过期时间","范围","跳转地址","状态","额外信息","创建时间"]
+[models.access]
+    names = ["client","authorize","previous","access_token","refresh_token","expires_in","scope","redirect_uri","extra","ctime"]
+    orms =     ["string", "string","string",   "string",       "string",        "int",   "string","string",     "text","int64"]
+    comments = ["client","authorize","previous","access_token","refresh_token","expires_in","scope","redirect_uri","extra","创建时间"]
+[models.expires]
+    names = ["id","token","expires_at"]
+    orms =     ["auto", "string","int64"]
+    comments = ["客户端","token","过期时间"]
+[models.refresh]
+    names = ["token","access"]
+    orms =     ["string", "string"]
+    comments = ["token","access"]
+[models.user]
+    names = ["uid","nickname","username","email","avatar","password","state","gender","birthday","ctime","utime","last_login_ip","last_login_time"]
+    orms =   ["auto", "string","string","string","string","string",  "int64","int64","int64",     "int64",     "int64","string","int64"]
+    comments = ["uid","nickname","用户名","邮箱","avatar","password","状态","gender","birthday","创建时间","更新时间","last_login_ip","last_login_time"]
+[models.user_secret]
+    names = ["id","uid","secret","is_bind","ctime","utime"]
+    orms = ["auto","int","string","int","int64","int64"]
+    comments = ["id","uid","秘钥","是否绑定","创建时间","更新时间"]
+[models.casbin_rule]
+    names =  ["id","p","v0","v1","v2","v3","v4","v5"]
+    orms =   ["auto", "string","string","string","string", "string","string","string" ]
+    comments = ["ID","策略、用户组","v0","v1","v2","v3","v4","v5"]
+[models.pms]
+    names =  ["id","app_id","pid","name",   "pms_code", "pms_rule","pms_type","order_num","intro","ctime","utime"]
+    orms =   ["auto", "int","int","string", "string",   "string",  "int","int","string","int64","int64" ]
+    comments = ["ID","应用id","菜单id","名称","权限标识",   "数据规则", "1=分类 2=数据权限","排序","说明","创建时间","更新时间"]
+[models.department]
+    names =  ["id","name","pid","order_num",  "extend_field", "intro","created_at","updated_at"]
+    orms =  ["auto","string","int","int",  "text", "string","int64","int64"]
+    comments = ["id","名称","上级部门id","排序",  "扩展字段", "介绍","创建时间","更新时间"]
+[models.menu]
+    names =  ["id",  "pid",    "app_id","name",     "path",    "pms_code", "pms_extend", "menu_type",         "icon", "order_num", "ctime", "utime","state"]
+    orms =  ["auto", "int",     "int",   "string",  "string", "string",   "text",  "int",               "string", "int", "int64", "int64","int"]
+    comments =  ["id",   "上级菜单id","应用id","菜单名称",  "路由", "标识",     "扩展信息",   "类型 1=菜单 2=按钮", "图标",    "排序", "创建时间", "更新时间","状态"]
+[models.menu_pms]
+    names =  ["id",  "pms_code", "key","app_id","ctime", "utime"]
+    orms =  ["auto",  "string", "string","int","int64", "int64"]
+    comments =  ["id",  "标识", "api或者button","应用id","创建时间", "更新时间"]
+[models.role]
+    names =  ["id",  "name", "app_id", "intro", "menu_ids", "menu_ids_ele"]
+    orms =  ["auto",  "string", "int", "string", "text", "text"]
+    comments =  ["id",  "角色名称", "应用名称", "说明", "menu_ids", "menu_ids_ele"]
+[models.role_pms]
+    names =  ["id",  "role_id", "pms_id"]
+    orms =  ["auto",  "int", "int"]
+    comments =  ["id",  "角色id", "数据权限id"]
+
+[path]
+    beego =  "./"
+    ant  = "./webui/src/pages/"
+
+
+
+
+
+
