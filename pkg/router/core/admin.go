@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"github.com/dgryski/dgoogauth"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -117,6 +118,7 @@ func (c *Context) LoginByUid(uid int, mfa string) error {
 		return err
 	}
 
+	fmt.Println("aaaaa", viper.GetBool("oauth.mfa"))
 	// google 验证器
 	if viper.GetBool("oauth.mfa") {
 		if mfa == "" {

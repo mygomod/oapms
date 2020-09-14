@@ -1,32 +1,14 @@
 -- @BeeOverwrite NO
 -- @BeeGenerateTime 20200820_230345
 CREATE TABLE user(
-
-
             `uid` int(11) NOT NULL AUTO_INCREMENT,
-
-
-
             `nickname` varchar(255) NOT NULL,
-
-
-
+            `username` varchar(255) NOT NULL,
             `email` varchar(255) NOT NULL,
-
-
-
             `avatar` varchar(255) NOT NULL,
-
-
-
             `password` varchar(500) NOT NULL,
-
-
-
+            `department_ids` json NOT NULL,
             `state` int(11) NOT NULL,
-
-
-
             `gender` int(11) NOT NULL,
 
 

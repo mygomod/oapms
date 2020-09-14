@@ -3,6 +3,8 @@
 package model
 
 import (
+	"database/sql/driver"
+	"encoding/json"
 	"github.com/jinzhu/gorm"
 	"go.uber.org/zap"
 	"oapms/pkg/mus"
@@ -12,23 +14,36 @@ import (
 )
 
 type User struct {
-	Uid           int    `orm:"auto"json:"uid" form:"uid"`                      // uid
-	Nickname      string `orm:"size(255)"json:"nickname" form:"nickname"`       // nickname
-	Email         string `orm:"size(255)"json:"email" form:"email"`             // email
-	Avatar        string `orm:"size(255)"json:"avatar" form:"avatar"`           // avatar
-	Password      string `orm:"size(255)"json:"-" form:"password"`              // password
-	State         int    `json:"state" form:"state"`                            // 状态
-	Gender        int64  `json:"gender" form:"gender"`                          // gender
-	Birthday      int64  `json:"birthday" form:"birthday"`                      // birthday
-	Ctime         int64  `json:"ctime" form:"ctime"`                            // 创建时间
-	Utime         int64  `json:"utime" form:"utime"`                            // 更新时间
-	LastLoginIp   string `orm:"size(255)"json:"lastLoginIp" form:"lastLoginIp"` // last_login_ip
-	LastLoginTime int64  `json:"lastLoginTime" form:"lastLoginTime"`            // last_login_time
+	Uid           int           `orm:"auto"json:"uid" form:"uid"`                      // uid
+	Nickname      string        `orm:"size(255)"json:"nickname" form:"nickname"`       // nickname
+	Username      string        `orm:"size(255)"json:"username" form:"username"`       // nickname
+	DepartmentIds DepartmentIds `gorm:"json"json:"departmentIds"`                      // DepartmentIds
+	Email         string        `orm:"size(255)"json:"email" form:"email"`             // email
+	Avatar        string        `orm:"size(255)"json:"avatar" form:"avatar"`           // avatar
+	Password      string        `orm:"size(255)"json:"-" form:"password"`              // password
+	State         int           `json:"state" form:"state"`                            // 状态
+	Gender        int64         `json:"gender" form:"gender"`                          // gender
+	Birthday      int64         `json:"birthday" form:"birthday"`                      // birthday
+	Ctime         int64         `json:"ctime" form:"ctime"`                            // 创建时间
+	Utime         int64         `json:"utime" form:"utime"`                            // 更新时间
+	LastLoginIp   string        `orm:"size(255)"json:"lastLoginIp" form:"lastLoginIp"` // last_login_ip
+	LastLoginTime int64         `json:"lastLoginTime" form:"lastLoginTime"`            // last_login_time
 
 }
 
 func (t *User) TableName() string {
 	return "user"
+}
+
+type DepartmentIds []int
+
+func (c DepartmentIds) Value() (driver.Value, error) {
+	b, err := json.Marshal(c)
+	return string(b), err
+}
+
+func (c *DepartmentIds) Scan(input interface{}) error {
+	return json.Unmarshal(input.([]byte), c)
 }
 
 // AddUser insert a new User into database and returns

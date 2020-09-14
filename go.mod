@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/RangelReale/osin v1.0.1
 	github.com/billcobbler/casbin-redis-watcher v0.0.0-20190706023639-52f9bd47d420
+	github.com/bullteam/go-dingtalk v0.0.0-20191103124359-201d069950ae
 	github.com/casbin/casbin v1.9.1
 	github.com/coreos/etcd v3.3.25+incompatible // indirect
 	github.com/dgryski/dgoogauth v0.0.0-20190221195224-5a805980a5f3

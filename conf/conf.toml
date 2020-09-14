@@ -1,6 +1,7 @@
 cdnUrl = "http://127.0.0.1:8000"
+
 [oauth]
-    mfa = true
+    mfa = false
     secret = "oauth_secret"
     salt = 16
     delimiter = "$"

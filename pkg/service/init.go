@@ -8,6 +8,7 @@ var (
 	Authorize    *authorize
 	Pms          *pms
 	PmsMenu      *pmsMenu
+	DingTalk     *dingTalk
 )
 
 func Init() error {
@@ -19,6 +20,7 @@ func Init() error {
 	Pms = InitPms()
 	PmsMenu = InitPmsMenu()
 	InitMailer()
+	DingTalk = &dingTalk{}
 	return nil
 
 }

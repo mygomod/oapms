@@ -4,13 +4,15 @@ OaPms 是GO语言实现的多应用版本的Oauth2权限系统。该项目参考
 # 介绍
 OaPms使用了GO，React技术，Gin，Ant Deign Pro4框架。使得我们的系统更加易于部署，开发和维护。
 功能点
-* [x] Oauth2服务，兼容gitlab oauth2
+* [x] Oauth2服务，兼容Gitlab Oauth2
 * [x] Casbin RBAC权限
 * [x] 全局级别Google身份验证器
+* [x] 自动注册API接口权限
+* [x] 钉钉、企业微信组织结构
 * [ ] Oauth网关
 * [ ] PMS SDK
-* [ ] 钉钉、企业微信组织结构
 * [ ] 数据权限
+
 
 ## 运行
 ```

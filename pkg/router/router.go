@@ -31,6 +31,7 @@ func InitRouter() *gin.Engine {
 	adminGrp.GET("/api/admin/oauth/user", core.Handle(api.OauthAdminUser))
 	adminGrp.GET("/api/admin/account/app", core.Handle(api.AccountApp))
 	adminGrp.GET("/api/admin/account/menu", core.Handle(api.AccountMenu))
+	adminGrp.GET("/api/admin/dingtalk/sync", core.Handle(api.Sync))
 
 	adminGrp.Use(core.PermCheck)
 

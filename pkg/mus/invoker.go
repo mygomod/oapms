@@ -1,6 +1,7 @@
 package mus
 
 import (
+	dingtalk "github.com/bullteam/go-dingtalk/src"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	"github.com/mygomod/muses/pkg/cache/redis"
@@ -8,15 +9,17 @@ import (
 	"github.com/mygomod/muses/pkg/logger"
 	musgin "github.com/mygomod/muses/pkg/server/gin"
 	"github.com/mygomod/muses/pkg/session/ginsession"
+	"github.com/spf13/viper"
 )
 
 var (
-	Cfg     musgin.Cfg
-	Logger  *logger.Client
-	Gin     *gin.Engine
-	Db      *gorm.DB
-	Session gin.HandlerFunc
-	Redis   *redis.Client
+	Cfg            musgin.Cfg
+	Logger         *logger.Client
+	Gin            *gin.Engine
+	Db             *gorm.DB
+	Session        gin.HandlerFunc
+	Redis          *redis.Client
+	DingTalkClient *dingtalk.DingTalkClient
 )
 
 // Init 初始化muses相关容器
@@ -36,6 +39,11 @@ func Init() error {
 	if Session == nil {
 		panic("session nil")
 	}
+	DingTalkClient = dingtalk.NewDingTalkCompanyClient(&dingtalk.DTConfig{
+		AppKey:    viper.GetString("dingtalk.appKey"),
+		AppSecret: viper.GetString("dingtalk.appSecret"),
+		CachePath: viper.GetString("dingtalk.cachePath"),
+	})
 	return nil
 
 }

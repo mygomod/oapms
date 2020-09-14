@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"github.com/skip2/go-qrcode"
 	"github.com/spf13/viper"
 	"image/png"
@@ -37,7 +36,6 @@ func AccountGoogleCode(c *core.Context) {
 		c.JSONErrTips("url parse error", err)
 		return
 	}
-	fmt.Println("account------>", account)
 
 	//URL.Path += "/" + url.PathEscape(issuer) + ":" + url.PathEscape(account)
 	URL.Path += "/" + url.PathEscape(issuer) + ":" + account
