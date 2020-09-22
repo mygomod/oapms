@@ -1,5 +1,9 @@
 cdnUrl = "http://127.0.0.1:8000"
-
+[dingtalk]
+  agentid= 1234
+  appKey= "xxx"
+  appSecret= "xxxx"
+  cachePath= "data/store"
 [oauth]
     mfa = false
     secret = "oauth_secret"

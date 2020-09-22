@@ -8,22 +8,32 @@ ant:
 	@cd $(APPPATH)/webui && npm start
 
 # 执行go指令
-go:
-	@cd $(APPPATH) && go run main.go start --conf=conf/conf.toml
-
 bee:
 	@bee pro migration --sqlmode=down --sqlpath=scripts/sql
 	@bee pro gen
 
-install:
-	@bee pro migration --sqlmode=down --sqlpath=scripts/sql
-	@bee pro migration --sqlmode=up --sqlpath=scripts/sql
-	@cd $(APPPATH) && go run main.go install
-
 prod.deploy.webui:
 	@cd $(APPPATH)/webui && npm run build
-	@cd $(APPPATH)/webui && $(APPPATH)/scripts/deploy/deploy_webui.sh $(APPNAME) xx-01
+	@cd $(APPPATH)/webui && $(APPPATH)/scripts/deploy/deploy_webui.sh $(APPNAME) root@xx-01
 
 prod.deploy.go:
 	@cd $(APPPATH) && go build
-	@cd $(APPPATH) && $(APPPATH)/scripts/deploy/deploy_go.sh $(APPNAME) xx-01
+	@cd $(APPPATH) && $(APPPATH)/scripts/deploy/deploy_go.sh $(APPNAME) root@xx-01
+
+prepub.deploy.webui:
+	@cd $(APPPATH)/webui && npm run build
+	@cd $(APPPATH)/webui && $(APPPATH)/scripts/deploy/deploy_webui.sh $(APPNAME) askuy@askuy
+
+prepub.deploy.go:
+	@cd $(APPPATH) && go build
+	@cd $(APPPATH) && $(APPPATH)/scripts/deploy/deploy_go.sh $(APPNAME) askuy@askuy
+
+go:
+	@cd $(APPPATH) && go run main.go start --conf=conf/conf-dev.toml
+clear:
+	@bee pro migration --sqlmode=down --sqlpath=scripts/sql
+install:
+	@cd $(APPPATH) && go run main.go install --conf=conf/conf-dev.toml --mode=install
+mock:
+	@cd $(APPPATH) && go run main.go install --conf=conf/conf-dev.toml --mode=mock
+debug: clear install mock

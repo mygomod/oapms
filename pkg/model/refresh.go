@@ -10,9 +10,9 @@ import (
 )
 
 type Refresh struct {
-	Id     int    `gorm:"auto"json:"id" form:"id"`              // ID
-	Token  string `gorm:"size(255)"json:"token" form:"token"`   // token
-	Access string `gorm:"size(255)"json:"access" form:"access"` // access
+	Id     int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // ID
+	Token  string `gorm:"not null"json:"token" form:"token"`                      // token
+	Access string `gorm:"not null"json:"access" form:"access"`                    // access
 
 }
 

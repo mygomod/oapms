@@ -10,9 +10,9 @@ import (
 )
 
 type Expires struct {
-	Id        int    `gorm:"auto"json:"id" form:"id"`            // 客户端
-	Token     string `gorm:"size(255)"json:"token" form:"token"` // token
-	ExpiresAt int64  `json:"expiresAt" form:"expiresAt"`         // 过期时间
+	Id        int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // 客户端
+	Token     string `gorm:"not null"json:"token" form:"token"`                      // token
+	ExpiresAt int64  `gorm:"not null"json:"expiresAt" form:"expiresAt"`              // 过期时间
 
 }
 

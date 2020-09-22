@@ -5,3 +5,5 @@ oapms
 bin.tar.gz
 conf/conf-prod.toml
 dist.tar.gz
+conf-dev.toml
+conf-prepub.toml

@@ -12,18 +12,18 @@ import (
 )
 
 type App struct {
-	Aid         int    `gorm:"auto"json:"aid" form:"aid"`                      // 应用id
-	ClientId    string `gorm:"size(255)"json:"clientId" form:"clientId"`       // 客户端
-	Name        string `gorm:"size(255)"json:"name" form:"name"`               // 名称
-	Secret      string `gorm:"size(255)"json:"secret" form:"secret"`           // 秘钥
-	RedirectUri string `gorm:"size(255)"json:"redirectUri" form:"redirectUri"` // 跳转地址
-	Url         string `gorm:"size(255)"json:"url" form:"url"`                 // 访问地址
-	Extra       string `gorm:"type(longtext)"json:"extra" form:"extra"`        // 额外信息
-	CallNo      int    `json:"callNo" form:"callNo"`                           // 号码
-	State       int    `json:"state" form:"state"`                             // 状态
-	Ctime       int64  `json:"ctime" form:"ctime"`                             // 创建时间
-	Utime       int64  `json:"utime" form:"utime"`                             // 更新时间
-	Dtime       int64  `json:"dtime" form:"dtime"`                             // 删除时间
+	Aid         int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"aid" form:"aid"` // 应用id
+	ClientId    string `gorm:"not null"json:"clientId" form:"clientId"`                  // 客户端
+	Name        string `gorm:"not null"json:"name" form:"name"`                          // 名称
+	Secret      string `gorm:"not null"json:"secret" form:"secret"`                      // 秘钥
+	RedirectUri string `gorm:"not null"json:"redirectUri" form:"redirectUri"`            // 跳转地址
+	Url         string `gorm:"not null"json:"url" form:"url"`                            // 访问地址
+	Extra       string `gorm:"not null;type:longtext"json:"extra" form:"extra"`          // 额外信息
+	CallNo      int    `gorm:"not null"json:"callNo" form:"callNo"`                      // 号码
+	State       int    `gorm:"not null"json:"state" form:"state"`                        // 状态
+	Ctime       int64  `gorm:"not null"json:"ctime" form:"ctime"`                        // 创建时间
+	Utime       int64  `gorm:"not null"json:"utime" form:"utime"`                        // 更新时间
+	Dtime       int64  `gorm:"not null"json:"dtime" form:"dtime"`                        // 删除时间
 
 }
 

@@ -119,7 +119,7 @@ func syncUser(tx *gorm.DB, id int) (err error) {
 			"username":       userName,
 			"email":          user.Email,
 			"avatar":         user.Avatar,
-			"department_ids": user.Department,
+			"department_ids": model.DepartmentIds(user.Department),
 			"state":          state,
 		})
 		if err != nil {

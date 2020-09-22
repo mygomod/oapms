@@ -12,17 +12,17 @@ import (
 )
 
 type Access struct {
-	Id           int    `gorm:"auto"json:"id" form:"id"`                          // ID
-	Client       string `gorm:"size(255)"json:"client" form:"client"`             // client
-	Authorize    string `gorm:"size(255)"json:"authorize" form:"authorize"`       // authorize
-	Previous     string `gorm:"size(255)"json:"previous" form:"previous"`         // previous
-	AccessToken  string `gorm:"size(255)"json:"accessToken" form:"accessToken"`   // access_token
-	RefreshToken string `gorm:"size(255)"json:"refreshToken" form:"refreshToken"` // refresh_token
-	ExpiresIn    int    `json:"expiresIn" form:"expiresIn"`                       // expires_in
-	Scope        string `gorm:"size(255)"json:"scope" form:"scope"`               // scope
-	RedirectUri  string `gorm:"size(255)"json:"redirectUri" form:"redirectUri"`   // redirect_uri
-	Extra        string `gorm:"type(longtext)"json:"extra" form:"extra"`          // extra
-	Ctime        int64  `json:"ctime" form:"ctime"`                               // 创建时间
+	Id           int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // ID
+	Client       string `gorm:"not null"json:"client" form:"client"`                    // client
+	Authorize    string `gorm:"not null"json:"authorize" form:"authorize"`              // authorize
+	Previous     string `gorm:"not null"json:"previous" form:"previous"`                // previous
+	AccessToken  string `gorm:"not null"json:"accessToken" form:"accessToken"`          // access_token
+	RefreshToken string `gorm:"not null"json:"refreshToken" form:"refreshToken"`        // refresh_token
+	ExpiresIn    int    `gorm:"not null"json:"expiresIn" form:"expiresIn"`              // expires_in
+	Scope        string `gorm:"not null"json:"scope" form:"scope"`                      // scope
+	RedirectUri  string `gorm:"not null"json:"redirectUri" form:"redirectUri"`          // redirect_uri
+	Extra        string `gorm:"not null;type:longtext"json:"extra" form:"extra"`        // extra
+	Ctime        int64  `gorm:"not null"json:"ctime" form:"ctime"`                      // 创建时间
 
 }
 

@@ -14,20 +14,20 @@ import (
 )
 
 type User struct {
-	Uid           int           `orm:"auto"json:"uid" form:"uid"`                      // uid
-	Nickname      string        `orm:"size(255)"json:"nickname" form:"nickname"`       // nickname
-	Username      string        `orm:"size(255)"json:"username" form:"username"`       // nickname
-	DepartmentIds DepartmentIds `gorm:"json"json:"departmentIds"`                      // DepartmentIds
-	Email         string        `orm:"size(255)"json:"email" form:"email"`             // email
-	Avatar        string        `orm:"size(255)"json:"avatar" form:"avatar"`           // avatar
-	Password      string        `orm:"size(255)"json:"-" form:"password"`              // password
-	State         int           `json:"state" form:"state"`                            // 状态
-	Gender        int64         `json:"gender" form:"gender"`                          // gender
-	Birthday      int64         `json:"birthday" form:"birthday"`                      // birthday
-	Ctime         int64         `json:"ctime" form:"ctime"`                            // 创建时间
-	Utime         int64         `json:"utime" form:"utime"`                            // 更新时间
-	LastLoginIp   string        `orm:"size(255)"json:"lastLoginIp" form:"lastLoginIp"` // last_login_ip
-	LastLoginTime int64         `json:"lastLoginTime" form:"lastLoginTime"`            // last_login_time
+	Uid           int           `gorm:"not null;primary_key;AUTO_INCREMENT"json:"uid" form:"uid"` // uid
+	Nickname      string        `gorm:"not null"json:"nickname" form:"nickname"`                  // nickname
+	Username      string        `gorm:"not null"json:"username" form:"username"`                  // nickname
+	DepartmentIds DepartmentIds `gorm:"not null;type:json"json:"departmentIds"`                   // DepartmentIds
+	Email         string        `gorm:"not null"json:"email" form:"email"`                        // email
+	Avatar        string        `gorm:"not null"json:"avatar" form:"avatar"`                      // avatar
+	Password      string        `gorm:"not null"json:"-" form:"password"`                         // password
+	State         int           `gorm:"not null"json:"state"form:"state"`                         // 状态
+	Gender        int64         `gorm:"not null"json:"gender" form:"gender"`                      // gender
+	Birthday      int64         `gorm:"not null"json:"birthday" form:"birthday"`                  // birthday
+	Ctime         int64         `gorm:"not null"json:"ctime" form:"ctime"`                        // 创建时间
+	Utime         int64         `gorm:"not null"json:"utime" form:"utime"`                        // 更新时间
+	LastLoginIp   string        `gorm:"not null"json:"lastLoginIp" form:"lastLoginIp"`            // last_login_ip
+	LastLoginTime int64         `gorm:"not null"json:"lastLoginTime" form:"lastLoginTime"`        // last_login_time
 
 }
 

@@ -12,12 +12,12 @@ import (
 )
 
 type UserSecret struct {
-	Id       int    `orm:"auto"json:"id" form:"id"`              // id
-	Uid      int    `json:"uid" form:"uid"`                      // uid
-	Secret   string `orm:"size(255)"json:"secret" form:"secret"` // 秘钥
-	IsBind   int    `json:"isBind" form:"isBind"`                // 是否绑定
-	Ctime    int64  `json:"ctime" form:"ctime"`                  // 创建时间
-	Utime    int64  `json:"utime" form:"utime"`                  // 更新时间
+	Id       int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // id
+	Uid      int    `gorm:"not null"json:"uid" form:"uid"`                          // uid
+	Secret   string `gorm:"not null"json:"secret" form:"secret"`                    // 秘钥
+	IsBind   int    `gorm:"not null"json:"isBind" form:"isBind"`                    // 是否绑定
+	Ctime    int64  `gorm:"not null"json:"ctime" form:"ctime"`                      // 创建时间
+	Utime    int64  `gorm:"not null"json:"utime" form:"utime"`                      // 更新时间
 	Nickname string `gorm:"-",json:"nickname"`
 }
 

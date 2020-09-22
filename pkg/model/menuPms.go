@@ -12,12 +12,12 @@ import (
 )
 
 type MenuPms struct {
-	Id      int    `gorm:"auto"json:"id" form:"id"`                // id
-	PmsCode string `gorm:"size(255)"json:"pmsCode" form:"pmsCode"` // 标识
-	Key     string `gorm:"size(255)"json:"key" form:"key"`         // api或者button
-	AppId   int    `json:"appId" form:"appId"`                     // 应用id
-	Ctime   int64  `json:"ctime" form:"ctime"`                     // 创建时间
-	Utime   int64  `json:"utime" form:"utime"`                     // 更新时间
+	Id      int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // id
+	PmsCode string `gorm:"not null"json:"pmsCode" form:"pmsCode"`                  // 标识
+	Key     string `gorm:"not null"json:"key" form:"key"`                          // api或者button
+	AppId   int    `gorm:"not null"json:"appId" form:"appId"`                      // 应用id
+	Ctime   int64  `gorm:"not null"json:"ctime" form:"ctime"`                      // 创建时间
+	Utime   int64  `gorm:"not null"json:"utime" form:"utime"`                      // 更新时间
 
 }
 

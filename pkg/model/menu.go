@@ -13,21 +13,21 @@ import (
 )
 
 type Menu struct {
-	Id                  int            `orm:"auto"json:"id" form:"id"`          // id
-	Pid                 int            `json:"pid" form:"pid"`                  // 上级菜单id
-	AppId               int            `json:"appId" form:"appId"`              // 应用id
-	Name                string         `orm:"size(255)"json:"name" form:"name"` // 菜单名称
-	Path                string         `orm:"size(255)"json:"path" form:"url"`  // 路由url
+	Id                  int            `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // id
+	Pid                 int            `gorm:"not null"json:"pid" form:"pid"`                          // 上级菜单id
+	AppId               int            `gorm:"not null"json:"appId" form:"appId"`                      // 应用id
+	Name                string         `gorm:"not null"json:"name" form:"name"`                        // 菜单名称
+	Path                string         `gorm:"not null"json:"path" form:"url"`                         // 路由url
 	Key                 string         `gorm:"-"json:"key"`
-	PmsCode             string         `orm:"size(255)"json:"pmsCode" form:"pmsCode"` // 标识
-	MenuPmsKey          MenuPmsKeyJson `gorm:"-"json:"menuPmsKey"`                    // 扩展信息
-	MenuType            int            `json:"menuType" form:"menuType"`              // 类型 1=菜单 2=按钮
-	Icon                string         `orm:"size(255)"json:"icon" form:"icon"`       // 图标
-	OrderNum            int            `json:"orderNum" form:"orderNum"`              // 排序
-	State               int            `json:"state"`
-	Ctime               int64          `json:"ctime" form:"ctime"` // 创建时间
-	Utime               int64          `json:"utime" form:"utime"` // 更新时间
-	Actions             *MenuTrees     `json:"actions"`
+	PmsCode             string         `gorm:"not null"json:"pmsCode" form:"pmsCode"`   // 标识
+	MenuPmsKey          MenuPmsKeyJson `gorm:"-"json:"menuPmsKey"`                      // 扩展信息
+	MenuType            int            `gorm:"not null"json:"menuType" form:"menuType"` // 类型 1=菜单 2=按钮
+	Icon                string         `gorm:"not null"json:"icon" form:"icon"`         // 图标
+	OrderNum            int            `gorm:"not null"json:"orderNum" form:"orderNum"` // 排序
+	State               int            `gorm:"not null"json:"state"`
+	Ctime               int64          `gorm:"not null"json:"ctime" form:"ctime"` // 创建时间
+	Utime               int64          `gorm:"not null"json:"utime" form:"utime"` // 更新时间
+	Actions             *MenuTrees     `gorm:"not null"json:"actions"`
 	Children            *MenuTrees     `gorm:"-"json:"children"`
 	ProLayoutParentKeys []string       `gorm:"-"json:"pro_layout_parentKeys"` // ant design pro
 }
@@ -48,12 +48,12 @@ func (c *MenuPmsKeyJson) Scan(input interface{}) error {
 }
 
 type MenuCheck struct {
-	Id       int    `orm:"auto"json:"menuId" form:"id"`      // id
-	Pid      int    `json:"pid" form:"pid"`                  // 上级菜单id
-	AppId    int    `json:"appId" form:"appId"`              // 应用id
-	MenuType int    `json:"menuType" form:"menuType"`        // 类型 1=菜单 2=按钮
-	Name     string `orm:"size(255)"json:"name" form:"name"` // 菜单名称
-	Url      string `orm:"size(255)"json:"url" form:"url"`   // 路由url
+	Id       int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"menuId" form:"id"` // id
+	Pid      int    `json:"pid" form:"pid"`                                             // 上级菜单id
+	AppId    int    `json:"appId" form:"appId"`                                         // 应用id
+	MenuType int    `json:"menuType" form:"menuType"`                                   // 类型 1=菜单 2=按钮
+	Name     string `orm:"size(255)"json:"name" form:"name"`                            // 菜单名称
+	Url      string `orm:"size(255)"json:"url" form:"url"`                              // 路由url
 	Actions  []int  `json:"actions"`
 }
 

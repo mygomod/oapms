@@ -12,15 +12,15 @@ import (
 )
 
 type Authorize struct {
-	Id          int    `gorm:"auto"json:"id" form:"id"`                        // ID
-	Client      string `gorm:"size(255)"json:"client" form:"client"`           // 客户端
-	Code        string `gorm:"size(255)"json:"code" form:"code"`               // 状态码
-	ExpiresIn   int32  `json:"expiresIn" form:"expiresIn"`                     // 过期时间
-	Scope       string `gorm:"size(255)"json:"scope" form:"scope"`             // 范围
-	RedirectUri string `gorm:"size(255)"json:"redirectUri" form:"redirectUri"` // 跳转地址
-	State       string `gorm:"size(255)"json:"state" form:"state"`             // 状态
-	Extra       string `gorm:"type(longtext)"json:"extra" form:"extra"`        // 额外信息
-	Ctime       int64  `json:"ctime" form:"ctime"`                             // 创建时间
+	Id          int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // ID
+	Client      string `gorm:"not null"json:"client" form:"client"`                    // 客户端
+	Code        string `gorm:"not null"json:"code" form:"code"`                        // 状态码
+	ExpiresIn   int32  `gorm:"not null"json:"expiresIn" form:"expiresIn"`              // 过期时间
+	Scope       string `gorm:"not null"json:"scope" form:"scope"`                      // 范围
+	RedirectUri string `gorm:"not null"json:"redirectUri" form:"redirectUri"`          // 跳转地址
+	State       string `gorm:"not null"json:"state" form:"state"`                      // 状态
+	Extra       string `gorm:"not null;type:longtext"json:"extra" form:"extra"`        // 额外信息
+	Ctime       int64  `gorm:"not null"json:"ctime" form:"ctime"`                      // 创建时间
 
 }
 

@@ -12,17 +12,17 @@ import (
 )
 
 type Pms struct {
-	Id       int    `orm:"auto"json:"id" form:"id"`                // ID
-	AppId    int    `json:"appId" form:"appId"`                    // 应用id
-	Pid      int    `json:"pid" form:"pid"`                        // 菜单id
-	Name     string `orm:"size(255)"json:"name" form:"name"`       // 名称
-	PmsCode  string `orm:"size(255)"json:"pmsCode" form:"pmsCode"` // 权限标识
-	PmsRule  string `orm:"size(255)"json:"pmsRule" form:"pmsRule"` // 数据规则
-	PmsType  int    `json:"pmsType" form:"pmsType"`                // 1=分类 2=数据权限
-	OrderNum int    `json:"orderNum" form:"orderNum"`              // 排序
-	Intro    string `orm:"size(255)"json:"intro" form:"intro"`     // 说明
-	Ctime    int64  `json:"ctime" form:"ctime"`                    // 创建时间
-	Utime    int64  `json:"utime" form:"utime"`                    // 更新时间
+	Id       int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // ID
+	AppId    int    `gorm:"not null;"json:"appId" form:"appId"`                     // 应用id
+	Pid      int    `gorm:"not null;"json:"pid" form:"pid"`                         // 菜单id
+	Name     string `gorm:"not null;"json:"name" form:"name"`                       // 名称
+	PmsCode  string `gorm:"not null;"json:"pmsCode" form:"pmsCode"`                 // 权限标识
+	PmsRule  string `gorm:"not null;"json:"pmsRule" form:"pmsRule"`                 // 数据规则
+	PmsType  int    `gorm:"not null;"json:"pmsType" form:"pmsType"`                 // 1=分类 2=数据权限
+	OrderNum int    `gorm:"not null;"json:"orderNum" form:"orderNum"`               // 排序
+	Intro    string `gorm:"not null;"json:"intro" form:"intro"`                     // 说明
+	Ctime    int64  `gorm:"not null;"json:"ctime" form:"ctime"`                     // 创建时间
+	Utime    int64  `gorm:"not null;"json:"utime" form:"utime"`                     // 更新时间
 
 }
 

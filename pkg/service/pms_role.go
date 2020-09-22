@@ -18,8 +18,6 @@ func (*pms) AssignMenuPms(roleId int, menuIds []int, dataPermCount int) (err err
 
 	menus := model.MenuApiListByIds(menuIds)
 
-	fmt.Println("menus------>", menus)
-
 	if len(menus) > 0 {
 		var policies [][]string
 		for _, m := range menus {

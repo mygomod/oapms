@@ -18,9 +18,11 @@ var InstallCmd = &cobra.Command{
 }
 
 var ConfigPath string
+var InstallMode string
 
 func init() {
 	InstallCmd.PersistentFlags().StringVarP(&ConfigPath, "conf", "c", "conf/conf.toml", "conf path")
+	InstallCmd.PersistentFlags().StringVarP(&InstallMode, "mode", "m", "all", "mode type")
 }
 
 func installCmd(cmd *cobra.Command, args []string) {
@@ -32,7 +34,17 @@ func installCmd(cmd *cobra.Command, args []string) {
 	app.SetCfg(ConfigPath)
 
 	app.SetPostRun(mus.Init, service.Init, func() error {
-		install.MockData()
+		var err error
+		if InstallMode == "all" || InstallMode == "install" {
+			err = install.Create()
+			if err != nil {
+				return err
+			}
+		}
+		if InstallMode == "all" || InstallMode == "mock" {
+			install.MockData()
+			return nil
+		}
 		return nil
 	})
 	err := app.Run()

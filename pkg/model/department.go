@@ -10,14 +10,14 @@ import (
 )
 
 type Department struct {
-	Id          int    `gorm:"auto"json:"id" form:"id"`                             // id
-	Name        string `gorm:"size(255)"json:"name" form:"name"`                    // 名称
-	Pid         int    `json:"pid" form:"pid"`                                      // 上级部门id
-	OrderNum    int    `json:"orderNum" form:"orderNum"`                            // 排序
-	ExtendField string `gorm:"type(longtext)"json:"extendField" form:"extendField"` // 扩展字段
-	Intro       string `gorm:"size(255)"json:"intro" form:"intro"`                  // 介绍
-	CreatedAt   int64  `json:"createdAt" form:"createdAt"`                          // 创建时间
-	UpdatedAt   int64  `json:"updatedAt" form:"updatedAt"`                          // 更新时间
+	Id          int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"`      // id
+	Name        string `gorm:"not null"json:"name" form:"name"`                             // 名称
+	Pid         int    `gorm:"not null"json:"pid" form:"pid"`                               // 上级部门id
+	OrderNum    int    `gorm:"not null"json:"orderNum" form:"orderNum"`                     // 排序
+	ExtendField string `gorm:"not null;type:longtext"json:"extendField" form:"extendField"` // 扩展字段
+	Intro       string `gorm:"not null"json:"intro" form:"intro"`                           // 介绍
+	CreatedAt   int64  `gorm:"not null"json:"createdAt" form:"createdAt"`                   // 创建时间
+	UpdatedAt   int64  `gorm:"not null"json:"updatedAt" form:"updatedAt"`                   // 更新时间
 
 }
 

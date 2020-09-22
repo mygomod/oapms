@@ -10,14 +10,14 @@ import (
 )
 
 type CasbinRule struct {
-	Id int    `gorm:"auto"json:"id" form:"id"`      // ID
-	P  string `gorm:"size(255)"json:"p" form:"p"`   // 策略、用户组
-	V0 string `gorm:"size(255)"json:"v0" form:"v0"` // v0
-	V1 string `gorm:"size(255)"json:"v1" form:"v1"` // v1
-	V2 string `gorm:"size(255)"json:"v2" form:"v2"` // v2
-	V3 string `gorm:"size(255)"json:"v3" form:"v3"` // v3
-	V4 string `gorm:"size(255)"json:"v4" form:"v4"` // v4
-	V5 string `gorm:"size(255)"json:"v5" form:"v5"` // v5
+	Id int    `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // ID
+	P  string `gorm:"not null"json:"p" form:"p"`                              // 策略、用户组
+	V0 string `gorm:"not null"json:"v0" form:"v0"`                            // v0
+	V1 string `gorm:"not null"json:"v1" form:"v1"`                            // v1
+	V2 string `gorm:"not null"json:"v2" form:"v2"`                            // v2
+	V3 string `gorm:"not null"json:"v3" form:"v3"`                            // v3
+	V4 string `gorm:"not null"json:"v4" form:"v4"`                            // v4
+	V5 string `gorm:"not null"json:"v5" form:"v5"`                            // v5
 
 }
 

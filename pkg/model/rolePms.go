@@ -10,9 +10,9 @@ import (
 )
 
 type RolePms struct {
-	Id     int `gorm:"auto"json:"id" form:"id"` // id
-	RoleId int `json:"roleId" form:"roleId"`    // 角色id
-	PmsId  int `json:"pmsId" form:"pmsId"`      // 数据权限id
+	Id     int `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"` // id
+	RoleId int `json:"roleId" form:"roleId"`                                   // 角色id
+	PmsId  int `json:"pmsId" form:"pmsId"`                                     // 数据权限id
 
 }
 

@@ -13,12 +13,12 @@ import (
 )
 
 type Role struct {
-	Id         int         `orm:"auto"json:"id" form:"id"`                           // id
-	Name       string      `orm:"size(255)"json:"name" form:"name"`                  // 角色名称
-	AppId      int         `json:"appId" form:"appId"`                               // 应用名称
-	Intro      string      `orm:"size(255)"json:"intro" form:"intro"`                // 说明
-	MenuIds    MenuIdsJson `gorm:"json"json:"menuIds" form:"menuIds"`                // menu_ids
-	MenuIdsEle string      `orm:"type(longtext)"json:"menuIdsEle" form:"menuIdsEle"` // menu_ids_ele
+	Id         int         `gorm:"not null;primary_key;AUTO_INCREMENT"json:"id" form:"id"`    // id
+	Name       string      `gorm:"not null;"json:"name" form:"name"`                          // 角色名称
+	AppId      int         `gorm:"not null;"json:"appId" form:"appId"`                        // 应用名称
+	Intro      string      `gorm:"not null;"json:"intro" form:"intro"`                        // 说明
+	MenuIds    MenuIdsJson `gorm:"not null;type:json"json:"menuIds" form:"menuIds"`           // menu_ids
+	MenuIdsEle string      `gorm:"not null;type:longtext"json:"menuIdsEle" form:"menuIdsEle"` // menu_ids_ele
 	Pms        []Pms       `gorm:"-"json:"pms"`
 }
 
